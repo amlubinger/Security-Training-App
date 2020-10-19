@@ -11,6 +11,7 @@ public class PasswordCreator {
      */
 
     private int passwordMaxLength;
+    private int passwordMinLength;
     private boolean passwordHasNumbers;
     private boolean passwordHasSymbols;
     private boolean passwordHasCapitals;
@@ -57,6 +58,7 @@ public class PasswordCreator {
 
     public PasswordCreator(int passwordMaxLength, boolean passwordHasNumbers, boolean passwordHasSymbols, boolean passwordHasCapitals) {
         this.passwordMaxLength = passwordMaxLength;
+        this.passwordMinLength = 6;
         this.passwordHasNumbers = passwordHasNumbers;
         this.passwordHasSymbols = passwordHasSymbols;
         this.passwordHasCapitals = passwordHasCapitals;
@@ -67,27 +69,34 @@ public class PasswordCreator {
         boolean returnPassNumbers = false;
         boolean returnPassSymbols = false;
         String newPassword = "";
-        for(int i = 1; i < rand.nextInt(4); i++) {
-            if (passwordHasCapitals) {
-                newPassword += capWords.get(rand.nextInt(capWords.size()));
-            } else {
-                newPassword += words.get(rand.nextInt(words.size()));
+        while (newPassword.length() < passwordMinLength || newPassword.length() > passwordMaxLength) {
+            newPassword = "";
+            returnPassNumbers = false;
+            returnPassSymbols = false;
+            int loopLimit = rand.nextInt((this.passwordMaxLength / 5));
+            for (int i = 1; i <= loopLimit; i++) {
+                if (passwordHasCapitals) {
+                    newPassword += capWords.get(rand.nextInt(capWords.size()));
+                } else {
+                    newPassword += words.get(rand.nextInt(words.size()));
+                }
+                if (passwordHasNumbers && rand.nextBoolean()) {
+                    newPassword += numbers.get(rand.nextInt(numbers.size()));
+                    returnPassNumbers = true;
+                }
+                if (passwordHasSymbols && rand.nextBoolean()) {
+                    newPassword += symbols.get(rand.nextInt(symbols.size()));
+                    returnPassSymbols = true;
+                }
             }
-            if (passwordHasNumbers && rand.nextBoolean()) {
+            if (passwordHasNumbers && !returnPassNumbers) {
                 newPassword += numbers.get(rand.nextInt(numbers.size()));
-                returnPassNumbers = true;
             }
-            if (passwordHasSymbols && rand.nextBoolean()) {
+            if (passwordHasSymbols && !returnPassSymbols) {
                 newPassword += symbols.get(rand.nextInt(symbols.size()));
-                returnPassSymbols = true;
             }
-        }
-        if (passwordHasNumbers && !returnPassNumbers) {
-            newPassword += numbers.get(rand.nextInt(numbers.size()));
-        }
-        if (passwordHasSymbols && !returnPassSymbols) {
-            newPassword += symbols.get(rand.nextInt(symbols.size()));
         }
         return newPassword;
+
     }
 }
