@@ -65,7 +65,7 @@ public class PasswordGame {
         if (passwordContainsCaps(worsePassword) && !passwordContainsCaps(betterPassword)) {
             bestPasswordIndex -= 1;
         }
-        if (passwordContainsCaps(worsePassword) && !passwordContainsCaps(betterPassword)) {
+        if (passwordContainsNums(worsePassword) && !passwordContainsNums(betterPassword)) {
             bestPasswordIndex -= 1;
         }
         if (passwordContainsSyms(worsePassword) && !passwordContainsSyms(betterPassword)) {
@@ -73,7 +73,7 @@ public class PasswordGame {
         }
         if ((betterPassword.length()) - 5 >= worsePassword.length()) {
             bestPasswordIndex += 1;
-            if ((betterPassword.length() - 10) >= worsePassword.length() {
+            if ((betterPassword.length() - 10) >= worsePassword.length()) {
                 bestPasswordIndex += 1;
             }
         }
