@@ -8,7 +8,6 @@ public class PasswordGame {
     private int numRounds;
     private int playedRounds;
     private int correctRounds;
-    private int difficulty;
     private PasswordCreator worseAnswerMaker;
     private PasswordCreator betterAnswerMaker;
 
@@ -18,15 +17,12 @@ public class PasswordGame {
         this.playedRounds = 0;
         this.correctRounds = 0;
         if (difficulty == 1) {
-            this.difficulty = 1;
             this.worseAnswerMaker = new PasswordCreator(10, false, false, false);
             this.betterAnswerMaker = new PasswordCreator(25, true, true, true);
         } else if (difficulty == 2) {
-            this.difficulty = 2;
             this.worseAnswerMaker = new PasswordCreator(15, true, false, true);
             this.betterAnswerMaker = new PasswordCreator(25, true, false, true);
         } else if (difficulty == 3) {
-            this.difficulty = 3;
             this.worseAnswerMaker = new PasswordCreator(20, true, true, true);
             this.betterAnswerMaker = new PasswordCreator(25, true, true, true);
         }
@@ -56,6 +52,10 @@ public class PasswordGame {
     }
     public boolean isGameOver() {
         if (playedRounds == numRounds) { return true; } else { return false; }
+    }
+    public int percentageCorrect() {
+        float value = correctRounds / playedRounds;
+        return Math.round(value * 100);
     }
 
 
