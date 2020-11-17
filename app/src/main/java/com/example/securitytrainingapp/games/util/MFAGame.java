@@ -34,14 +34,14 @@ public class MFAGame {
             add("Retina");
         }
     };
-    private static final Random rand = new Random();
+    private Random rand;
     private int playedRounds;
     private int correctRounds;
     //This variable is 0 for something you know, 1 for something you have, and 2 for something you are
     private int currentQuestion;
 
     public MFAGame() {
-        //Empty constructor, no setup needed
+        rand = new Random();
     }
 
     public void addCorrectRound() {
@@ -53,7 +53,7 @@ public class MFAGame {
         playedRounds++;
     }
     public boolean isGameOver() {
-        if (playedRounds == numRounds) { return true; } else { return false; }
+        return playedRounds == numRounds;
     }
 
     public String getCurrentQuestion() {
@@ -64,6 +64,9 @@ public class MFAGame {
         } else {
             return "Which of these is something you are?";
         }
+    }
+    public int getCurrentQuestionNumber() {
+        return this.currentQuestion;
     }
 
     public void setNewRandomQuestion() {
