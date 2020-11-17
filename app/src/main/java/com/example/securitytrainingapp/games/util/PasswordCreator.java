@@ -17,7 +17,7 @@ public class PasswordCreator {
     private boolean passwordHasCapitals;
 
 
-    private static List<String> words = new ArrayList<String>() {
+    static List<String> words = new ArrayList<String>() {
         {
             add("test");
             add("hello");
@@ -28,7 +28,7 @@ public class PasswordCreator {
             add("service");
         }
     };
-    private static List<String> capWords = new ArrayList<String>() {
+    static List<String> capWords = new ArrayList<String>() {
         {
             add("Test");
             add("Hello");
@@ -39,14 +39,14 @@ public class PasswordCreator {
             add("Service");
         }
     };
-    private static List<String> numbers = new ArrayList<String>() {
+    static List<String> numbers = new ArrayList<String>() {
         {
             for(int i = 0; i < 10; i++) {
                 add(Integer.toString(i));
             }
         }
     };
-    private static List<String> symbols = new ArrayList<String>() {
+    static List<String> symbols = new ArrayList<String>() {
         {
             add("*");
             add("(");
