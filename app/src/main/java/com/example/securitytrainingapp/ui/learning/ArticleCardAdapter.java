@@ -7,9 +7,11 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.securitytrainingapp.R;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import java.util.List;
 
@@ -47,9 +49,22 @@ public class ArticleCardAdapter extends RecyclerView.Adapter<ArticleCardAdapter.
 
     @Override
     public void onBindViewHolder(ArticleViewHolder articleViewHolder, int i) {
-        String[] article = articles.get(i);
+        final String[] article = articles.get(i);
         articleViewHolder.title.setText(article[0]);
         articleViewHolder.text.setText(article[1]);
+        articleViewHolder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View v = (View) view.getParent().getParent().getParent();
+                View articleView = v.findViewById(R.id.article);
+                TextView title = articleView.findViewById(R.id.article_title);
+                title.setText(article[0]);
+                TextView text = articleView.findViewById(R.id.article_text);
+                text.setText(article[2]);
+                BottomSheetBehavior<View> bottomSheet = BottomSheetBehavior.from(articleView);
+                bottomSheet.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
+            }
+        });
     }
 
     @Override
