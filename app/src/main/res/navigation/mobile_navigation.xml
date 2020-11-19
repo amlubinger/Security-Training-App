@@ -9,7 +9,14 @@
         android:id="@+id/navigation_games"
         android:name="com.example.securitytrainingapp.ui.games.GamesFragment"
         android:label="@string/title_games"
-        tools:layout="@layout/fragment_games" />
+        tools:layout="@layout/fragment_games">
+        <action
+            android:id="@+id/playPasswordGame"
+            app:destination="@id/password_game"/>
+        <action
+            android:id="@+id/playMFAGame"
+            app:destination="@id/mfa_game"/>
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_learning"
@@ -22,4 +29,16 @@
         android:name="com.example.securitytrainingapp.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/password_game"
+        android:name="com.example.securitytrainingapp.ui.games.BestPasswordFragment"
+        android:label="Best Password Game"
+        tools:layout="@layout/fragment_best_password"/>
+
+    <fragment
+        android:id="@+id/mfa_game"
+        android:name="com.example.securitytrainingapp.ui.games.MFAQuizFragment"
+        android:label="Multi-Factor Authentication Game"
+        tools:layout="@layout/fragment_mfa_quiz"/>
 </navigation>
