@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.securitytrainingapp.R;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
 import org.w3c.dom.Text;
 
@@ -81,6 +82,9 @@ public class LearningFragment extends Fragment {
 
         ArticleCardAdapter adapter = new ArticleCardAdapter(articles);
         recyclerView.setAdapter(adapter);
+
+        BottomSheetBehavior<View> bottomSheet = BottomSheetBehavior.from(root.findViewById(R.id.article));
+        bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
 
         return root;
     }
