@@ -1,5 +1,7 @@
 package com.example.securitytrainingapp.games.util;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,9 +12,10 @@ public class CryptographyGame {
     private String chosenQuote;
     private final List<String> quotesToDecrypt = new ArrayList<String>() {
         {
-            add("This is quote #1");
-            add("This is quote #2");
-            add("This is quote #3");
+            add("This is quote one");
+            add("This is quote two");
+            add("This is quote three");
+            add("This is quote four");
         }
     };
 
@@ -30,7 +33,11 @@ public class CryptographyGame {
     }
 
     public boolean checkUserOffset(String cipherText, int userOffset) {
-        return this.chosenQuote.equals(decryptPlainText(cipherText, userOffset));
+        return this.chosenQuote.toLowerCase().equals(decryptPlainText(cipherText, userOffset));
+    }
+
+    public String provideDecryptText(String cipherText, int userOffset) {
+        return decryptPlainText(cipherText, userOffset);
     }
 
     private String encryptPlainText() {
@@ -41,7 +48,7 @@ public class CryptographyGame {
             int curCharInt = (int) curChar;
             int neededOffset = this.julianOffset;
             char encryptedChar = (char) (curCharInt + neededOffset);
-            if ((122 - curCharInt) > neededOffset) {
+            if ((122 - curCharInt) < neededOffset) {
                 neededOffset -= (122 - curCharInt);
                 encryptedChar = (char) (97 + neededOffset);
             }
@@ -50,6 +57,7 @@ public class CryptographyGame {
             }
             returnString.append(encryptedChar);
         }
+        Log.d("Encryption", returnString.toString());
         return returnString.toString();
     }
 
@@ -60,7 +68,7 @@ public class CryptographyGame {
             int curCharInt = (int) curChar;
             int neededOffset = userOffset;
             char encryptedChar = (char) (curCharInt + neededOffset);
-            if ((122 - curCharInt) > neededOffset) {
+            if ((122 - curCharInt) < neededOffset) {
                 neededOffset -= (122 - curCharInt);
                 encryptedChar = (char) (97 + neededOffset);
             }
