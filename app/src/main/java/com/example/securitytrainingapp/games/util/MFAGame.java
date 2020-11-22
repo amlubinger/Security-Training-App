@@ -52,7 +52,8 @@ public class MFAGame {
     public void addIncorrectRound() {
         playedRounds++;
     }
-    public boolean isGameOver() {
+
+    public boolean gameIsOver() {
         return playedRounds == numRounds;
     }
 
@@ -103,6 +104,10 @@ public class MFAGame {
                 return haveFactors.get(rand.nextInt(haveFactors.size()));
             }
         }
+    }
+
+    public String getFinalScoreString() {
+        return "You got " + correctRounds + " questions right out of " + playedRounds + ".";
     }
 
 }

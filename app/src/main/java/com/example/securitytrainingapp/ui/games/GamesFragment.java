@@ -50,7 +50,7 @@ public class GamesFragment extends Fragment {
         decryption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Navigation.findNavController(view).navigate(R.id.action_navigation_games_to_cryptographyFragment);
             }
         });
         return view;

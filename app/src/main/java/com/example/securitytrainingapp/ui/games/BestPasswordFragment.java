@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.securitytrainingapp.R;
 import com.example.securitytrainingapp.games.util.PasswordCreator;
@@ -23,6 +24,7 @@ public class BestPasswordFragment extends Fragment implements View.OnClickListen
     private PasswordGame gameController;
     private Button topButton;
     private Button bottomButton;
+    private TextView scoreDisplayText;
     private Random rand;
     private boolean isTopButtonCorrect;
 
@@ -45,7 +47,7 @@ public class BestPasswordFragment extends Fragment implements View.OnClickListen
          */
         topButton = view.findViewById(R.id.passwordButtonTop);
         bottomButton = view.findViewById(R.id.passwordButtonBottom);
-
+        scoreDisplayText = view.findViewById(R.id.textScoreDisplay);
         //Set up buttons with text
         List<String> passwords = gameController.getPasswords();
         if (isTopButtonCorrect) {
@@ -100,16 +102,24 @@ public class BestPasswordFragment extends Fragment implements View.OnClickListen
         } else {
             gameController.addCorrectRound();
         }
-        //Set new correct button
-        isTopButtonCorrect = isTopButtonCorrect();
-        //Set up buttons again
-        List<String> passwords = gameController.getPasswords();
-        if (isTopButtonCorrect) {
-            topButton.setText(passwords.get(1));
-            bottomButton.setText(passwords.get(0));
+        if(!gameController.gameIsOver()) {
+            //Set new correct button
+            isTopButtonCorrect = isTopButtonCorrect();
+            //Set up buttons again
+            List<String> passwords = gameController.getPasswords();
+            if (isTopButtonCorrect) {
+                topButton.setText(passwords.get(1));
+                bottomButton.setText(passwords.get(0));
+            } else {
+                topButton.setText(passwords.get(0));
+                bottomButton.setText(passwords.get(1));
+            }
         } else {
-            topButton.setText(passwords.get(0));
-            bottomButton.setText(passwords.get(1));
+            //Set text view to show score
+            scoreDisplayText.setText("You scored: " + gameController.percentageCorrect() + "%");
+            //Disable buttons
+            topButton.setEnabled(false);
+            bottomButton.setEnabled(false);
         }
     }
 

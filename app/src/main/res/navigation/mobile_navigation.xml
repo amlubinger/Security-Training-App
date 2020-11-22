@@ -16,6 +16,9 @@
         <action
             android:id="@+id/playMFAGame"
             app:destination="@id/mfa_game"/>
+        <action
+            android:id="@+id/action_navigation_games_to_cryptographyFragment"
+            app:destination="@id/cryptographyFragment" />
     </fragment>
 
     <fragment
@@ -41,4 +44,9 @@
         android:name="com.example.securitytrainingapp.ui.games.MFAQuizFragment"
         android:label="Multi-Factor Authentication Game"
         tools:layout="@layout/fragment_mfa_quiz"/>
+    <fragment
+        android:id="@+id/cryptographyFragment"
+        android:name="com.example.securitytrainingapp.ui.games.CryptographyFragment"
+        android:label="fragment_cryptography"
+        tools:layout="@layout/fragment_cryptography" />
 </navigation>

@@ -50,8 +50,8 @@ public class PasswordGame {
         }
         return passwords;
     }
-    public boolean isGameOver() {
-        if (playedRounds == numRounds) { return true; } else { return false; }
+    public boolean gameIsOver() {
+        return playedRounds == numRounds;
     }
     public int percentageCorrect() {
         float value = correctRounds / playedRounds;

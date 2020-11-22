@@ -65,58 +65,80 @@ public class MFAQuizFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.mfaButtonLeft:
-                onLeftButtonClick(view);
+                onLeftButtonClick();
                 break;
             case R.id.mfaButtonRight:
-                onRightButtonClick(view);
+                onRightButtonClick();
                 break;
         }
     }
 
-    private void onLeftButtonClick(View view) {
+    private void onLeftButtonClick() {
         //Add round
         if (isLeftButtonCorrect) {
             gameController.addCorrectRound();
         } else {
             gameController.addIncorrectRound();
         }
-        //Reset question
-        String currentQuestion = gameController.getCurrentQuestion();
-        TextView questionText = view.findViewById(R.id.questionText);
-        questionText.setText(currentQuestion);
-        //Set new correct button
-        isLeftButtonCorrect = isLeftButtonCorrect();
-        //Set up buttons again
-        if (isLeftButtonCorrect) {
-            leftButton.setText(gameController.getCorrectAnswerOption());
-            rightButton.setText(gameController.getIncorrectAnswerOption());
+        if (!gameController.gameIsOver()) {
+            //Reset question
+            gameController.setNewRandomQuestion();
+            String currentQuestion = gameController.getCurrentQuestion();
+            TextView questionText = this.view.findViewById(R.id.questionText);
+            questionText.setText(currentQuestion);
+            //Set new correct button
+            isLeftButtonCorrect = isLeftButtonCorrect();
+            //Set up buttons again
+            if (isLeftButtonCorrect) {
+                leftButton.setText(gameController.getCorrectAnswerOption());
+                rightButton.setText(gameController.getIncorrectAnswerOption());
+            } else {
+                leftButton.setText(gameController.getIncorrectAnswerOption());
+                rightButton.setText(gameController.getCorrectAnswerOption());
+            }
         } else {
-            leftButton.setText(gameController.getIncorrectAnswerOption());
-            rightButton.setText(gameController.getCorrectAnswerOption());
+            //Set question text to show stats
+            String overallScore = gameController.getFinalScoreString();
+            TextView questionText = this.view.findViewById(R.id.questionText);
+            questionText.setText(overallScore);
+            //Disable answer buttons
+            leftButton.setEnabled(false);
+            rightButton.setEnabled(false);
         }
 
     }
 
-    private void onRightButtonClick(View view) {
+    private void onRightButtonClick() {
         //Add round
         if (isLeftButtonCorrect) {
             gameController.addIncorrectRound();
         } else {
             gameController.addCorrectRound();
         }
-        //Reset question
-        String currentQuestion = gameController.getCurrentQuestion();
-        TextView questionText = view.findViewById(R.id.questionText);
-        questionText.setText(currentQuestion);
-        //Set new correct button
-        isLeftButtonCorrect = isLeftButtonCorrect();
-        //Set up buttons again
-        if (isLeftButtonCorrect) {
-            leftButton.setText(gameController.getCorrectAnswerOption());
-            rightButton.setText(gameController.getIncorrectAnswerOption());
+        if (!gameController.gameIsOver()) {
+            //Reset question
+            gameController.setNewRandomQuestion();
+            String currentQuestion = gameController.getCurrentQuestion();
+            TextView questionText = this.view.findViewById(R.id.questionText);
+            questionText.setText(currentQuestion);
+            //Set new correct button
+            isLeftButtonCorrect = isLeftButtonCorrect();
+            //Set up buttons again
+            if (isLeftButtonCorrect) {
+                leftButton.setText(gameController.getCorrectAnswerOption());
+                rightButton.setText(gameController.getIncorrectAnswerOption());
+            } else {
+                leftButton.setText(gameController.getIncorrectAnswerOption());
+                rightButton.setText(gameController.getCorrectAnswerOption());
+            }
         } else {
-            leftButton.setText(gameController.getIncorrectAnswerOption());
-            rightButton.setText(gameController.getCorrectAnswerOption());
+            //Set question text to show stats
+            String overallScore = gameController.getFinalScoreString();
+            TextView questionText = this.view.findViewById(R.id.questionText);
+            questionText.setText(overallScore);
+            //Disable answer buttons
+            leftButton.setEnabled(false);
+            rightButton.setEnabled(false);
         }
     }
 
