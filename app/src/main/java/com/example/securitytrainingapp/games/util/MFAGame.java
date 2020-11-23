@@ -36,7 +36,13 @@ public class MFAGame {
     };
     private Random rand;
     private int playedRounds;
+
     private int correctRounds;
+
+    public int getCorrectRounds() {
+        return correctRounds;
+    }
+
     //This variable is 0 for something you know, 1 for something you have, and 2 for something you are
     private int currentQuestion;
 

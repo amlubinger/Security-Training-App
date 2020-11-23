@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.securitytrainingapp.MainActivity;
 import com.example.securitytrainingapp.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 
@@ -26,12 +27,8 @@ import java.util.List;
 
 public class LearningFragment extends Fragment {
 
-    private LearningViewModel learningViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        learningViewModel =
-                ViewModelProviders.of(this).get(LearningViewModel.class);
         View root = inflater.inflate(R.layout.fragment_learning, container, false);
         RecyclerView recyclerView = (RecyclerView) root.findViewById(R.id.article_card_recycler_view);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -85,6 +82,21 @@ public class LearningFragment extends Fragment {
 
         BottomSheetBehavior<View> bottomSheet = BottomSheetBehavior.from(root.findViewById(R.id.article));
         bottomSheet.setState(BottomSheetBehavior.STATE_HIDDEN);
+
+        bottomSheet.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+            @Override
+            public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_HIDDEN) {
+                    //Update the reward score.
+                    MainActivity.rewardScore += 75;
+                }
+            }
+
+            @Override
+            public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+                //Don't need to do anything but this empty method is necessary to add the bottom sheet callback.
+            }
+        });
 
         return root;
     }

@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.securitytrainingapp.MainActivity;
 import com.example.securitytrainingapp.R;
 
 public class PhishingFragment extends Fragment {
@@ -34,6 +35,8 @@ public class PhishingFragment extends Fragment {
             public void onClick(View view) {
                 if(urgent.isChecked() && address.isChecked() && grammar.isChecked() && !url.isChecked() && !attachment.isChecked() && !personal.isChecked() && unusual.isChecked()) {
                     v.setBackgroundColor(0xFFB2F478);
+                    //Update the reward score.
+                    MainActivity.rewardScore += 50;
                 } else {
                     v.setBackgroundColor(0xFFFF6F6F);
                 }

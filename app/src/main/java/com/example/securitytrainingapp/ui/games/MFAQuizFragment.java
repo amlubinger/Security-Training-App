@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.securitytrainingapp.MainActivity;
 import com.example.securitytrainingapp.R;
 import com.example.securitytrainingapp.games.util.MFAGame;
 
@@ -101,6 +102,8 @@ public class MFAQuizFragment extends Fragment implements View.OnClickListener{
             String overallScore = gameController.getFinalScoreString();
             TextView questionText = this.view.findViewById(R.id.questionText);
             questionText.setText(overallScore);
+            //Update the reward score.
+            MainActivity.rewardScore += gameController.getCorrectRounds() * 20;
             //Disable answer buttons
             leftButton.setEnabled(false);
             rightButton.setEnabled(false);
