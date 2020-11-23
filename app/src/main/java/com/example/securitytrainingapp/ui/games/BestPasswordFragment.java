@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.securitytrainingapp.MainActivity;
 import com.example.securitytrainingapp.R;
 import com.example.securitytrainingapp.games.util.PasswordGame;
 
@@ -113,6 +114,8 @@ public class BestPasswordFragment extends Fragment implements View.OnClickListen
         } else {
             //Set text view to show score
             instructions.setText("You scored: " + gameController.percentageCorrect() + "%");
+            //Update the reward score.
+            MainActivity.rewardScore += gameController.percentageCorrect() * gameController.getDifficulty();
             //Disable buttons
             topButton.setEnabled(false);
             bottomButton.setEnabled(false);
@@ -142,6 +145,8 @@ public class BestPasswordFragment extends Fragment implements View.OnClickListen
         } else {
             //Set text view to show score
             instructions.setText("You scored: " + gameController.percentageCorrect() + "%");
+            //Update the reward score.
+            MainActivity.rewardScore += gameController.percentageCorrect() * gameController.getDifficulty();
             //Disable buttons
             topButton.setEnabled(false);
             bottomButton.setEnabled(false);

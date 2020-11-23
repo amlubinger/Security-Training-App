@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
+import com.example.securitytrainingapp.MainActivity;
 import com.example.securitytrainingapp.R;
 import com.example.securitytrainingapp.games.util.CryptographyGame;
 
@@ -49,6 +50,8 @@ public class CryptographyFragment extends Fragment implements NumberPicker.OnVal
         this.decryptText.setText(gameController.provideDecryptText(gameController.provideCipherText(), this.userOffsetPicker.getValue()));
         if (gameController.checkUserOffset(gameController.provideCipherText(), this.userOffsetPicker.getValue())) {
             this.view.setBackgroundColor(0xFFB2F478);
+            //Update the reward score.
+            MainActivity.rewardScore += 50;
         } else {
             this.view.setBackgroundColor(0xFFFF6F6F);
         }

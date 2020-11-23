@@ -2,6 +2,7 @@ package com.example.securitytrainingapp;
 
 import android.os.Bundle;
 
+import com.example.securitytrainingapp.ui.profile.Reward;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,9 +11,14 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     NavController navController;
+
+    public static int rewardScore = 25;
+    public static ArrayList<Reward> rewards = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
+
+        //Create the rewards list.
+        rewards.add(new Reward("OSU T-Shirt", 750));
     }
 
     @Override

@@ -8,6 +8,7 @@ public class PasswordGame {
     private int numRounds;
     private int playedRounds;
     private int correctRounds;
+    private int difficulty;
     private PasswordCreator worseAnswerMaker;
     private PasswordCreator betterAnswerMaker;
 
@@ -16,6 +17,7 @@ public class PasswordGame {
         this.numRounds = numRounds;
         this.playedRounds = 0;
         this.correctRounds = 0;
+        this.difficulty = difficulty;
         if (difficulty == 1) {
             this.worseAnswerMaker = new PasswordCreator(10, false, false, false);
             this.betterAnswerMaker = new PasswordCreator(25, true, true, true);
@@ -113,5 +115,9 @@ public class PasswordGame {
             }
         }
         return passwordContainsSyms;
+    }
+
+    public int getDifficulty() {
+        return difficulty;
     }
 }
