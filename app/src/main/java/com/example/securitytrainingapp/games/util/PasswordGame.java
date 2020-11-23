@@ -27,6 +27,9 @@ public class PasswordGame {
             this.betterAnswerMaker = new PasswordCreator(25, true, true, true);
         }
     }
+    public String string() {
+        return "numRounds: " + numRounds + " playedRounds: " + playedRounds + " correctRounds: " + correctRounds;
+    }
     public void addCorrectRound() {
         this.playedRounds += 1;
         this.correctRounds += 1;
@@ -54,7 +57,7 @@ public class PasswordGame {
         return playedRounds == numRounds;
     }
     public int percentageCorrect() {
-        float value = correctRounds / playedRounds;
+        float value = (float)correctRounds / playedRounds;
         return Math.round(value * 100);
     }
 

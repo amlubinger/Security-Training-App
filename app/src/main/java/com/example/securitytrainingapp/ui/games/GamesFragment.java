@@ -38,7 +38,7 @@ public class GamesFragment extends Fragment {
         phishing.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Navigation.findNavController(view).navigate(R.id.playPhishingGame);
             }
         });
         mfa.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +50,7 @@ public class GamesFragment extends Fragment {
         decryption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_navigation_games_to_cryptographyFragment);
+                Navigation.findNavController(view).navigate(R.id.playCryptographyGame);
             }
         });
         return view;

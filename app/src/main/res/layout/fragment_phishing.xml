@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="50dp"
+    android:background="#F2B3F8E0"
+    tools:context=".ui.games.PhishingFragment">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:id="@+id/phishingImage"
+        android:src="@drawable/phishing"
+        android:padding="5dp"/>
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="5dp"
+        android:text="Select the everything wrong in the email"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/phishingImage"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:id="@+id/checkboxes"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="20dp">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <CheckBox android:id="@+id/checkbox_urgent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sense of urgency"/>
+            <CheckBox android:id="@+id/checkbox_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From an unofficial address"/>
+            <CheckBox android:id="@+id/checkbox_grammar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bad grammar"/>
+            <CheckBox android:id="@+id/checkbox_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unfamiliar URL"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <CheckBox android:id="@+id/checkbox_attachment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suspicious attachment"/>
+            <CheckBox android:id="@+id/checkbox_personal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Asking for personal information"/>
+            <CheckBox android:id="@+id/checkbox_unusual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unusual request"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/checkboxes"
+        android:id="@+id/submit_button"
+        android:text="Submit"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorPrimary"/>
+
+</RelativeLayout>
