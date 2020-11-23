@@ -17,8 +17,11 @@
             android:id="@+id/playMFAGame"
             app:destination="@id/mfa_game"/>
         <action
-            android:id="@+id/action_navigation_games_to_cryptographyFragment"
+            android:id="@+id/playCryptographyGame"
             app:destination="@id/cryptographyFragment" />
+        <action
+            android:id="@+id/playPhishingGame"
+            app:destination="@id/phishingFragment" />
     </fragment>
 
     <fragment
@@ -44,9 +47,17 @@
         android:name="com.example.securitytrainingapp.ui.games.MFAQuizFragment"
         android:label="Multi-Factor Authentication Game"
         tools:layout="@layout/fragment_mfa_quiz"/>
+
     <fragment
         android:id="@+id/cryptographyFragment"
         android:name="com.example.securitytrainingapp.ui.games.CryptographyFragment"
-        android:label="fragment_cryptography"
+        android:label="Cryptography Game"
         tools:layout="@layout/fragment_cryptography" />
+
+
+    <fragment
+        android:id="@+id/phishingFragment"
+        android:name="com.example.securitytrainingapp.ui.games.PhishingFragment"
+        android:label="Phishing Game"
+        tools:layout="@layout/fragment_phishing" />
 </navigation>

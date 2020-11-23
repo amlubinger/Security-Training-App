@@ -1,48 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#F2B3F8E0"
     tools:context=".ui.games.GamesFragment">
 
-    <Button
-        android:id="@+id/button_pwrd_chooser"
-        android:layout_width="match_parent"
+    <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Choose the Best Password"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@+id/button_phishing_challenge"
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_width="match_parent"
+        android:id="@+id/button_row_one"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-    <Button
-        android:id="@+id/button_phishing_challenge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Phishing Challenge"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@+id/button_mfa_quiz"
-        tools:layout_editor_absoluteX="0dp" />
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button_mfa_quiz"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:text="Multi-Factor Authentication Quiz"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toTopOf="@+id/button_decryption_challenge"
-        tools:layout_editor_absoluteX="0dp" />
+            <Button
+                android:id="@+id/button_pwrd_chooser"
+                android:text="Choose the Best Password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:drawableLeft="@drawable/vpn_key_black_24dp"
+                android:drawableTint="@color/colorPrimary"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:padding="15dp"/>
 
-    <Button
-        android:id="@+id/button_decryption_challenge"
-        android:layout_width="match_parent"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_phishing_challenge"
+                android:text="Phishing Challenge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:drawableLeft="@drawable/mark_email_read_black_24dp"
+                android:drawableTint="@color/colorPrimary"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:padding="15dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_marginBottom="288dp"
-        android:text="Decryption Challenge"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="-16dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_width="match_parent"
+        android:id="@+id/button_row_two"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_mfa_quiz"
+                android:text="Multi-Factor Authentication Quiz"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:drawableLeft="@drawable/verified_user_24px"
+                android:drawableTint="@color/colorPrimary"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:padding="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_decryption_challenge"
+                android:text="Decryption Challenge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:drawableLeft="@drawable/enhanced_encryption_24px"
+                android:drawableTint="@color/colorPrimary"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:padding="15dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/button_row_more"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/button_coming_soon"
+                android:text="More games coming soon!"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/colorPrimary"
+                android:drawableLeft="@drawable/videogame_asset_black_24dp"
+                android:drawableTint="@color/colorPrimary"
+                android:drawablePadding="10dp"
+                android:gravity="center_vertical"
+                android:padding="15dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

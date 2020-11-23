@@ -25,6 +25,7 @@ public class BestPasswordFragment extends Fragment implements View.OnClickListen
     private Button topButton;
     private Button bottomButton;
     private TextView scoreDisplayText;
+    private TextView instructions;
     private Random rand;
     private boolean isTopButtonCorrect;
 
@@ -48,6 +49,7 @@ public class BestPasswordFragment extends Fragment implements View.OnClickListen
         topButton = view.findViewById(R.id.passwordButtonTop);
         bottomButton = view.findViewById(R.id.passwordButtonBottom);
         scoreDisplayText = view.findViewById(R.id.textScoreDisplay);
+        instructions = view.findViewById(R.id.instructions);
         //Set up buttons with text
         List<String> passwords = gameController.getPasswords();
         if (isTopButtonCorrect) {
@@ -82,17 +84,27 @@ public class BestPasswordFragment extends Fragment implements View.OnClickListen
         } else {
             gameController.addIncorrectRound();
         }
-        //Set new correct button
-        isTopButtonCorrect = isTopButtonCorrect();
-        //Set up buttons again
-        List<String> passwords = gameController.getPasswords();
-        if (isTopButtonCorrect) {
-            topButton.setText(passwords.get(1));
-            bottomButton.setText(passwords.get(0));
+        if(!gameController.gameIsOver()) {
+            //Set new correct button
+            isTopButtonCorrect = isTopButtonCorrect();
+            //Set up buttons again
+            List<String> passwords = gameController.getPasswords();
+            if (isTopButtonCorrect) {
+                topButton.setText(passwords.get(1));
+                bottomButton.setText(passwords.get(0));
+            } else {
+                topButton.setText(passwords.get(0));
+                bottomButton.setText(passwords.get(1));
+            }
         } else {
-            topButton.setText(passwords.get(0));
-            bottomButton.setText(passwords.get(1));
+            //Set text view to show score
+            instructions.setVisibility(View.INVISIBLE);
+            scoreDisplayText.setText("You scored: " + gameController.percentageCorrect() + "%");
+            //Disable buttons
+            topButton.setEnabled(false);
+            bottomButton.setEnabled(false);
         }
+        Log.d("Password Game", gameController.string());
     }
 
     private void onBottomButtonClick(View view) {
@@ -116,11 +128,13 @@ public class BestPasswordFragment extends Fragment implements View.OnClickListen
             }
         } else {
             //Set text view to show score
+            instructions.setVisibility(View.INVISIBLE);
             scoreDisplayText.setText("You scored: " + gameController.percentageCorrect() + "%");
             //Disable buttons
             topButton.setEnabled(false);
             bottomButton.setEnabled(false);
         }
+        Log.d("Password Game", gameController.string());
     }
 
     private boolean isTopButtonCorrect() {
