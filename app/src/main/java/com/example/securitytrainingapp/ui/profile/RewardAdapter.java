@@ -53,6 +53,9 @@ public class RewardAdapter extends ArrayAdapter<Reward> {
             }
             holder.progressBar.setProgressText(percentage + "%");
             holder.textView.setText(item.getName());
+            if(item.redeemed) {
+                holder.progressBar.setProgressColor(mContext.getResources().getColor(R.color.colorPrimaryDark));
+            }
         }
 
         return convertView;
