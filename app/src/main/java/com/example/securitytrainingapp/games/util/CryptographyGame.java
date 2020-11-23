@@ -12,10 +12,10 @@ public class CryptographyGame {
     private String chosenQuote;
     private final List<String> quotesToDecrypt = new ArrayList<String>() {
         {
-            add("This is quote one");
-            add("This is quote two");
-            add("This is quote three");
-            add("This is quote four");
+            add("It's not the size of the dog in the fight, but the size of the fight in the dog - Archie Griffin");
+            add("Nothing that comes easy is worth a dime - Woody Hayes");
+            add("Nobody cares how much you know, until they know how much you care - Jim Tressel");
+            add("It all goes so fast, and character makes the difference when it's close - Jesse Owens");
         }
     };
 
@@ -54,6 +54,12 @@ public class CryptographyGame {
             }
             if (curCharInt == 32) {
                 encryptedChar = ' ';
+            } else if (curCharInt == 45) {
+                encryptedChar = '-';
+            } else if (curCharInt == 39) {
+                encryptedChar = '\'';
+            } else if (curCharInt == 44) {
+                encryptedChar = ',';
             }
             returnString.append(encryptedChar);
         }
@@ -72,10 +78,26 @@ public class CryptographyGame {
                 neededOffset -= (122 - curCharInt);
                 encryptedChar = (char) (97 + neededOffset);
             }
+            if ( encryptedChar == 'a' && chosenQuote.equals(quotesToDecrypt.get(0))) {
+                encryptedChar = 'z';
+            } else if ( encryptedChar == 'z' && !chosenQuote.equals(quotesToDecrypt.get(0))) {
+                encryptedChar = 'a';
+            }
             if (curCharInt == 32) {
                 encryptedChar = ' ';
+            } if (curCharInt == 32) {
+                encryptedChar = ' ';
+            } else if (curCharInt == 45) {
+                encryptedChar = '-';
+            } else if (curCharInt == 39) {
+                encryptedChar = '\'';
+            } else if (curCharInt == 44) {
+                encryptedChar = ',';
             }
             returnString.append(encryptedChar);
+        }
+        if (chosenQuote.equals(quotesToDecrypt.get(0))) {
+            returnString.setCharAt(82, 'a');
         }
         return returnString.toString();
     }
