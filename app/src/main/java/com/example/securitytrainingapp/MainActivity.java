@@ -1,10 +1,12 @@
 package com.example.securitytrainingapp;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import com.example.securitytrainingapp.ui.profile.Reward;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     NavController navController;
 
     public static int rewardScore = 25;
+    public static int dayStreak = 3;
     public static ArrayList<Reward> rewards = new ArrayList<>();
 
     @Override
@@ -36,6 +39,19 @@ public class MainActivity extends AppCompatActivity {
 
         //Create the rewards list.
         rewards.add(new Reward("OSU T-Shirt", 750));
+
+        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+        alertDialog.setTitle("Daily Reward");
+        alertDialog.setMessage("You earned 50 points for using the app today!\n\nYour streak is " + (dayStreak + 1) + " days!");
+        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "Hooray!",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dayStreak++;
+                        rewardScore += 50;
+                        dialog.dismiss();
+                    }
+                });
+        alertDialog.show();
     }
 
     @Override
