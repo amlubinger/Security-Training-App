@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         rewards.add(new Reward("Desk Chair", 1750));
         rewards.add(new Reward("Laptop", 2000));
         rewards.add(new Reward("Signed Heisman Trophy", 3000));
+        rewards.add(new Reward("Honorary Info Security Degree", 4000));
 
     }
 
