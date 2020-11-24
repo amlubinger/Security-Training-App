@@ -51,7 +51,14 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.show();
 
         //Create the rewards list.
-        rewards.add(new Reward("OSU T-Shirt", 750));
+        rewards.add(new Reward("Buckeye Necklace", 750));
+        rewards.add(new Reward("Brutus Keychain", 1000));
+        rewards.add(new Reward("OSU T-Shirt", 1250));
+        rewards.add(new Reward("Football Tickets", 1500));
+        rewards.add(new Reward("Desk Chair", 1750));
+        rewards.add(new Reward("Laptop", 2000));
+        rewards.add(new Reward("Signed Heisman Trophy", 3000));
+
     }
 
     @Override
