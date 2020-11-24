@@ -37,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
-        //Create the rewards list.
-        rewards.add(new Reward("OSU T-Shirt", 750));
-
         AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
         alertDialog.setTitle("Daily Reward");
         alertDialog.setMessage("You earned 50 points for using the app today!\n\nYour streak is " + (dayStreak + 1) + " days!");
@@ -52,6 +49,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         alertDialog.show();
+
+        //Create the rewards list.
+        rewards.add(new Reward("OSU T-Shirt", 750));
     }
 
     @Override
